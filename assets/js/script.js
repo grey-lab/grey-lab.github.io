@@ -157,3 +157,33 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+window.onload = function() {
+            var lastVisit = localStorage.getItem("lastVisit");
+            var currentDate = new Date().toDateString();
+
+            if (lastVisit === currentDate) {
+                showAlert("Feels Cool to be Back 😃!");
+            }
+
+            localStorage.setItem("lastVisit", currentDate);
+        };
+
+        function showAlert(message) {
+            var alertBox = document.createElement("div");
+            alertBox.className = "alert dark-mode";
+            alertBox.innerHTML = '<span class="loader"></span><span class="close">&times;</span>' + message;
+            document.body.appendChild(alertBox);
+
+            var closeBtn = alertBox.querySelector(".close");
+            closeBtn.addEventListener("click", function() {
+                alertBox.parentNode.removeChild(alertBox);
+            });
+
+            setTimeout(function() {
+                alertBox.classList.add("hide");
+                setTimeout(function() {
+                    alertBox.parentNode.removeChild(alertBox);
+                }, 500);
+            }, 5000);
+        }
