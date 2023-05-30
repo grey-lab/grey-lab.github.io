@@ -163,7 +163,7 @@ window.onload = function() {
             var currentDate = new Date().toDateString();
 
             if (lastVisit === currentDate) {
-                showAlert("Feels Cool to be Back 😃!");
+                showAlert("You're Back! 😃");
             }
 
             localStorage.setItem("lastVisit", currentDate);

@@ -1876,8 +1876,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 */
 
   .timeline-text { max-width: 700px; }
+}
 
-  .alert {
+.alert {
             position: fixed;
             top: 10px;
             left: 50%;
@@ -1927,4 +1928,12 @@ textarea.form-input::-webkit-resizer { display: none; }
             }
         }
 
-}
+        @media (max-width: 380px) {
+            .alert {
+                width: 90%;
+                max-width: 350px;
+                font-size: 18px;
+                top: 20px;
+                bottom: auto;
+            }
+        }
