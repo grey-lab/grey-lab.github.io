@@ -1348,17 +1348,21 @@
 
           <h3 class="h3 form-title">Contact Form</h3>
 
-          <form method="post" action="subscribe.php" class="form" data-form>
+          <form method="post" id="contactForm" class="form" data-form autocomplete="off">
 
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="text" name="name" class="form-input" placeholder="Full Name" id="inputName" required data-form-input>
 
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input type="email" name="email" id="inputEmail" class="form-input" placeholder="Email address" required data-form-input>
+
+              <input type="tel" name="phone" id="inputPhone" class="form-input" placeholder="Phone Number" required data-form-input>
             </div>
 
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <textarea name="message" class="form-input" placeholder="Your Message" id="inputMessage" required data-form-input></textarea>
 
-            <button class="form-btn" type="submit" disabled data-form-btn >
+            <div class="alert d-none" id="alertMessage"></div>
+
+            <button class="form-btn" id="btn" type="submit" disabled data-form-btn >
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
@@ -1368,6 +1372,44 @@
         </section>
 
       </article>
+
+      <script>
+    const contactForm = document.querySelector('#contactForm');
+    const btn = document.querySelector('#btn');
+    const alertMessage = document.querySelector('#alertMessage');
+
+    contactForm.addEventListener('submit', function(e) {
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch('sendmail.php', {
+          method: 'post',
+          body: formData
+        })
+        .then(function(response) {
+          return response.text();
+        })
+        .then(function(text) {
+          if (text === 'success') {
+            btn.textContent = 'Send Message';
+            btn.disabled = false;
+            alertMessage.classList.remove('d-none');
+            alertMessage.classList.add('alert-success');
+            alertMessage.innerHTML = 'Your message has been sent!';
+          } else {
+            btn.textContent = 'Send Message';
+            btn.disabled = false;
+            alertMessage.classList.remove('d-none');
+            alertMessage.classList.add('alert-danger');
+            alertMessage.innerHTML = 'Something went wrong!';
+          }
+        })
+        .catch(function(error) {
+          console.error(error);
+        })
+    });
+  </script>
 
     </div>
 
