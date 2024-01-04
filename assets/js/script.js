@@ -187,3 +187,15 @@ window.onload = function() {
                 }, 500);
             }, 5000);
         }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Hide the preloader when the content is fully loaded
+  setTimeout(function () {
+    document.querySelector(".preloader").style.display = "none";
+    document.querySelector(".content").style.display = "block";
+  }, 2000); // Adjust the duration as needed
+});
+
+
+
+        
