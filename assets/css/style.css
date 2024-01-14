@@ -610,10 +610,10 @@ main {
 
 
 .continue-application {
-  --color: #fff;
-  --background: #404660;
-  --background-hover: #3A4059;
-  --background-left: #2B3044;
+  --color: /*#fff*/;
+  --background: /*#404660*/;
+  --background-hover: /*#3A4059*/;
+  --background-left: /*#2B3044*/;
   --folder: #F3E9CB;
   --folder-inner: #BEB393;
   --paper: #FFFFFF;
@@ -637,7 +637,7 @@ main {
   padding: 17px 29px 17px 69px;
   transition: background 0.3s;
   color: var(--color);
-  background: var(--bg, var(--background));
+  background: /*var(--bg, var(--background))*/;
 }
 
 .continue-application > div {
@@ -648,7 +648,7 @@ main {
   position: absolute;
   overflow: hidden;
   border-radius: 5px 0 0 5px;
-  background: var(--background-left);
+  background: /*var(--background-left)*/;
 }
 
 .continue-application > div .folder {
@@ -781,7 +781,7 @@ main {
   width: 10px;
   height: 2px;
   border-radius: 1px;
-  background: var(--color);
+  background: /*var(--color)*/;
   transform-origin: 9px 1px;
   transform: translateX(var(--cx, 0)) scale(0.5) rotate(var(--r, -45deg));
   top: 26px;
